@@ -7,6 +7,7 @@
             <h1>Zap-Compras</h1>
           </div>
         </router-link>
+        
 
         <a
           role="button"
@@ -20,7 +21,25 @@
           <span aria-hidden="true"></span>
         </a>
       </div>
+ <b-navbar-nav>
+    <b-nav-item href="#">Promoções</b-nav-item>
+                    </b-navbar-nav>
+                    <b-nav-item-dropdown >
+                        <template slot="button-content">
+                            <em>Produtos</em>
+                        </template>
+                      <b-dropdown-item href="#"> >Produtos de Limpenza</b-dropdown-item>
+                      <b-dropdown-item href="#">  >Produtos n/Per..</b-dropdown-item>
+                    </b-nav-item-dropdown>
 
+                    <b-nav-item-dropdown >
+                        <template slot="button-content">
+                            <em>Mercados</em>
+                        </template>
+                      <b-dropdown-item href="#"> >Pague Mais</b-dropdown-item>
+                      <b-dropdown-item href="#"> >Baratino</b-dropdown-item>
+                    </b-nav-item-dropdown>
+              </b-navbar-nav>                    
       <div class="navbar-menu is-active">
         <div class="navbar-start">
           <div class="navbar-item field">
@@ -116,12 +135,6 @@ a {
   color: grey;
 }
 .marca {
-  background-position: 50% 50%;
-  background-size: 165px;
-  width:250px;
-  height: 50px;
-  font-size: 1.9em;
-  font-weight: bold;
-  color: red;
+   color: red;
 }
 </style>
