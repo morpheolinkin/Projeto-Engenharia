@@ -58,11 +58,8 @@
   }
 </script>
 <style scoped>
-
 b-carousel{
-
   height: 5% !important;
   width: 100%;
-
 }
 </style>

@@ -7,12 +7,12 @@
         <div class="card-content column is-two-thirds">
           <div class="card-content__title">
             <h2 class="title is-4">{{ product.PRODUTO.slice(0,13) }}...
-              <button class="button is-small" :PRODUTO="removeFromFavouriteLabel" v-show="product.isFavourite" @click="removeFromFavourite(product.ID_PRODUTO)">
+              <button class="button is-small" :title="removeFromFavouriteLabel" v-show="product.isFavourite" @click="removeFromFavourite(product.ID_PRODUTO)">
                 <span class="icon is-small">
                   <i class="fas fa-heart"></i>
                 </span>
               </button>
-              <button class="button is-small" :PRODUTO="addToFavouriteLabel" v-show="!product.isFavourite" @click="saveToFavorite(product.ID_PRODUTO)">
+              <button class="button is-small" :title="addToFavouriteLabel" v-show="!product.isFavourite" @click="saveToFavorite(product.id)">
                 <span class="icon is-small">
                   <i class="far fa-heart"></i>
                 </span>
@@ -86,22 +86,18 @@ export default {
       quantityArray: []
     };
   },
-
   mounted () {
     this.product = this.$store.getters.getProductById(this.$route.params.ID_PRODUTO);
     this.selected = this.product.quantity;
-
     for (let i = 1; i <= 20; i++) {
       this.quantityArray.push(i);
     }
   },
-
   computed: {
     isAddedBtn () {
       return this.product.isAddedBtn;
     }
   },
-
   methods: {
     addToCart (id) {
       let data = {
@@ -128,7 +124,6 @@ export default {
     },
     saveToFavorite (id) {
       let isUserLogged = this.$store.state.userInfo.isLoggedIn;
-
       if (isUserLogged) {
         this.$store.commit('addToFavourite', id);
       } else {
@@ -143,9 +138,19 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .card-content {
-    padding: 15px 10px 15px 0;
+ .section{
+    width: 68%;
+    margin-left: 15%;
+  }
+  .card {
+    margin-top: 10%;
+  }
 
+ .card-image {
+    width: 35% !important;
+  }
+  .card-content {
+    padding: 20px 10px 183px 0;
     &__text {
       margin: 15px 0;
     }
@@ -154,6 +159,11 @@ export default {
       width: 100%;
       margin-bottom: 10px;
     }
+    margin-left: 38%;
+    width: 55%;
+    margin-top: -36%;
   }
-</style>
+ 
+  
 
+</style>

@@ -137,4 +137,12 @@ a {
 .marca {
    color: red;
 }
+  .navbar{
+    position: fixed;
+    z-index: 99;
+    margin-top: 0%;
+    width: 100%;
+    height: 10%;
+    border-bottom: solid 3px #ff4000;
+  }
 </style>

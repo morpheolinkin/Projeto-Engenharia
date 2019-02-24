@@ -25,6 +25,7 @@
   ],
   "license": "MIT",
   "dependencies": {
+    "@chenfengyuan/vue-carousel": "^1.0.1",
     "axios": "^0.18.0",
     "babel-polyfill": "^6.26.0",
     "babel-runtime": "^6.26.0",

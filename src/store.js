@@ -14,6 +14,13 @@ export default new Vuex.Store({
       name: '',
       productTitleSearched: ''
     },
+    userInfo: {
+      isLoggedIn: false,
+      isSignedUp: false,
+      hasSearched: false,
+      name: '',
+      productTitleSearched: ''
+    },
     systemInfo: {
       openLoginModal: false,
       openSignupModal: false,
@@ -54,7 +61,7 @@ export default new Vuex.Store({
       return state.systemInfo.openCheckoutModal;
     },
     quantity: state => {
-      return state.products.quantity;
+      return state.products.ESTOQUE;
     }
   },
   
@@ -125,8 +132,8 @@ export default new Vuex.Store({
     },
     quantity: (state, data) => {
       state.products.forEach(el => {
-        if (data.id === el.id) {
-          el.quantity = data.quantity;
+        if (data.ID_PRODUTO === el.id) {
+          el.ESTOQUE = data.ESTOQUE;
         }
       });
     }
