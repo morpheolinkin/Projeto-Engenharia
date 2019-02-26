@@ -55,7 +55,7 @@
               <p><strong>{{ product.reviews > 0 ? `${product.reviews} Reviews` : 'No reviews' }}</strong></p>
             </div>
             <div class="select is-rounded is-small is-pulled-right">
-              <select @change="onSelectQuantity(product.id)" v-model="selected">
+              <select @change="onSelectQuantity(product.ID_PRODUTO)" v-model="selected">
                 <option v-for="quantity in quantityArray" :value="quantity">{{ quantity }}</option>
               </select>
             </div>

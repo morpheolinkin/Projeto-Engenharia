@@ -86,6 +86,7 @@
 export default {
   name: 'products-component',
   props: ['product'],
+  products: [],
   
   data () {
     return {
@@ -143,7 +144,7 @@ export default {
     },
     onSelectQuantity (id) {
       let data = {
-        id: ID_PRODUTO,
+        id: this.$store.state.products.ID_PRODUTO,
         quantity: this.selected
       }
       this.$store.commit('quantity', data);

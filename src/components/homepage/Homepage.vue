@@ -2,7 +2,7 @@
   <div>
    <carousel></carousel>
     <products-list-container></products-list-container>
-    <div v-for="t in products">
+    <div v-for="t in products" :key="products.ID_PRODUTO">
       {{t.PRODUTO}}<br>
     </div>
   </div>
@@ -17,16 +17,23 @@ export default {
   name: 'homepage-component',
   products: [],
 
+  data(){
+    return{
+      products: this.products
+    }
+  },
+
   components: {
     'products-list-container': ProductsListContainer,
    
     'carousel':Carousel
   },
   computed(){
-   this.products = this.$store.state.products
+   
   },
   mounted () {
     this.$store.dispatch("getProducts");
+    this.products = this.$store.state.products
     console.log(this.$store.state.products)
   }
 };

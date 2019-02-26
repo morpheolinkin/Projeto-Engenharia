@@ -18,16 +18,24 @@
       
       <b-carousel-slide
         caption="Zap-Compras"
-        text="Nulla vitae elit libero, a pharetra augue mollis interdum."
-        img-src="http://www.supermercadopoupar.com.br/images/principal.jpg"
+        text="Compras com facilidades e comforto na palma de sua mão."
+        img-src="imgens/WhatsApp Image 2019-02-24 at 23.01.18.jpeg"
       />
 
       <!-- Slides with custom text -->
-      <b-carousel-slide img-src="https://picsum.photos/1024/200/?image=54">
-        <h1>Hello world!</h1>
-        <h2>ZAP_COMPRAS</h2>
+      <b-carousel-slide img-src="imgens/principal.jpg">
       </b-carousel-slide>
 
+   <b-carousel-slide img-src="imgens/WhatsApp Image 2019-02-24 at 22.53.05.jpeg">
+      </b-carousel-slide>
+     
+     <b-carousel-slide img-src="imgens/WhatsApp Image 2019-02-24 at 22.54.26.jpeg">
+       </b-carousel-slide>
+     
+     <b-carousel-slide img-src="imgens/WhatsApp Image 2019-02-24 at 22.57.41.jpeg">
+        <h1>ZAP_COMPRAS</h1>
+        
+      </b-carousel-slide>
      </b-carousel>
 
     <p class="mt-4">
@@ -58,8 +66,10 @@
   }
 </script>
 <style scoped>
-b-carousel{
-  height: 5% !important;
+.carousel{
+ 
   width: 100%;
+  position: relative;
+  padding: 2% 0% 0% 0%;
 }
 </style>
