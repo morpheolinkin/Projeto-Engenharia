@@ -3,10 +3,11 @@
     <nav class="navbar" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
         <router-link :to="{ path: '/', name: 'homepage-component' }" class="navbar-item">
-          <div class="marca">
-            <h1>Zap-Compras</h1>
+          <div >
+            <img class="logo" src="../../../public/assets/ZAP-COMPRAS-LOGO-2.png">
+            <!-- <h1>Zap-Compras</h1> -->
           </div>
-        </router-link>
+        </router-link>    
         
 
         <a
@@ -21,32 +22,36 @@
           <span aria-hidden="true"></span>
         </a>
       </div>
- <b-navbar-nav>
-    <b-nav-item href="#">Promoções</b-nav-item>
-                    </b-navbar-nav>
-                    <b-nav-item-dropdown >
-                        <template slot="button-content">
-                            <em>Produtos</em>
-                        </template>
-                      <b-dropdown-item href="#"> >Produtos de Limpenza</b-dropdown-item>
-                      <b-dropdown-item href="#">  >Produtos n/Per..</b-dropdown-item>
-                    </b-nav-item-dropdown>
 
-                    <b-nav-item-dropdown >
-                        <template slot="button-content">
-                            <em>Mercados</em>
-                        </template>
-                      <b-dropdown-item href="#"> >Pague Mais</b-dropdown-item>
-                      <b-dropdown-item href="#"> >Baratino</b-dropdown-item>
-                    </b-nav-item-dropdown>
-              </b-navbar-nav>                    
-      <div class="navbar-menu is-active">
+ <div class="navbar-menu is-active">
+   
+    <b-navbar-nav>
+        <b-nav-item href="#">Promoções</b-nav-item>
+    </b-navbar-nav>
+     <b-nav-item-dropdown >
+      <template slot="button-content">
+          <em>Produtos</em>
+      </template>
+      <b-dropdown-item href="#"> >Produtos de Limpenza</b-dropdown-item>
+      <b-dropdown-item href="#">  >Produtos n/Per..</b-dropdown-item>
+      </b-nav-item-dropdown>
+
+      <b-nav-item-dropdown >
+          <template slot="button-content">
+              <em>Mercados</em>
+           </template>
+       <b-dropdown-item href="#"> >Pague Mais</b-dropdown-item>
+       <b-dropdown-item href="#"> >Baratino</b-dropdown-item>
+        </b-nav-item-dropdown>
+
+                     
+      
         <div class="navbar-start">
           <div class="navbar-item field">
             <search-component></search-component>
           </div>
         </div>
-
+  
         <div class="navbar-end">
           <div class="navbar-item social">
             <a href="#" class="icon" :title="facebookTooltip">
@@ -70,7 +75,7 @@
           </div>
         </div>
       </div>
-
+      
       <!-- For mobile and tablet -->
       <div v-show="isMenuOpen" class="navbar-end">
         <menu-component></menu-component>
@@ -122,27 +127,34 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.title {
-  background-position: 50% ;
-  background-size: 100px;
-  width: 300px;
-  height: 35px;
-}
+
 .shopping-cart {
   cursor: pointer;
 }
 a {
   color: grey;
 }
-.marca {
-   color: red;
-}
-  .navbar{
+.navbar{
     position: fixed;
     z-index: 99;
     margin-top: 0%;
-    width: 100%;
-    height: 10%;
+    padding: 2.5%;
+     width: 100%;
+    height: 12%;
     border-bottom: solid 3px #ff4000;
   }
+.navbar-item img {
+    max-height: 4rem;
+    margin-left: -35%;
+    height: auto;
+}
+.navbar-menu {
+  margin-top: -1.5%;
+}
+ .navbar-brand {
+   margin-right: -1rem;
+   margin-top: -4%;
+ 
+} 
+
 </style>
