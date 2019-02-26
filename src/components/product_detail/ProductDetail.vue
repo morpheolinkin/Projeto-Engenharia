@@ -1,9 +1,10 @@
 <template>
   <div class="section">
-    <div class="card is-clearfix columns">
+     <div class="card is-clearfix columns">
         <figure class="card-image is-480x480 column is-one-thirds">
           <img src="https://bulma.io/images/placeholders/480x480.png">
         </figure>
+        {{product.FANTASIA}}
         <div class="card-content column is-two-thirds">
           <div class="card-content__title">
             <h2 class="title is-4">{{ product.PRODUTO.slice(0,13) }}...
@@ -63,7 +64,7 @@
             <span class="title is-3" v-money="'R$'">{{ product.PRECO }}</span>
           </div>
           <div class="card-content__btn is-pulled-right">
-            <button class="button is-primary" v-if="!isAddedBtn" @click="addToCart(product.id)">{{ addToCartLabel }}</button>
+            <button class="button is-primary" v-if="!isAddedBtn" @click="addToCart(product.ID_PRODUTo)">{{ addToCartLabel }}</button>
             <button class="button is-text" v-if="isAddedBtn" @click="removeFromCart(product.id)">{{ removeFromCartLabel }}</button>
           </div>
       </div>
