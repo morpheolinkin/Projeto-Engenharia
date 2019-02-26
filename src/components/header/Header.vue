@@ -3,55 +3,23 @@
     <nav class="navbar" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
         <router-link :to="{ path: '/', name: 'homepage-component' }" class="navbar-item">
-          <div >
-            <img class="logo" src="../../../public/assets/ZAP-COMPRAS-LOGO-2.png">
-            <!-- <h1>Zap-Compras</h1> -->
-          </div>
-        </router-link>    
-        
+          <img class="logo" src="../../../public/assets/ZAP-COMPRAS-LOGO-2.png">
+        </router-link>
 
-        <a
-          role="button"
-          class="navbar-burger burger"
-          @click="isMenuOpen = !isMenuOpen"
-          aria-label="menu"
-          aria-expanded="false"
-        >
+        <a role="button" class="navbar-burger burger" @click="isMenuOpen = !isMenuOpen" aria-label="menu" aria-expanded="false">
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
         </a>
       </div>
 
- <div class="navbar-menu is-active">
-   
-    <b-navbar-nav>
-        <b-nav-item href="#">Promoções</b-nav-item>
-    </b-navbar-nav>
-     <b-nav-item-dropdown >
-      <template slot="button-content">
-          <em>Produtos</em>
-      </template>
-      <b-dropdown-item href="#"> >Produtos de Limpenza</b-dropdown-item>
-      <b-dropdown-item href="#">  >Produtos n/Per..</b-dropdown-item>
-      </b-nav-item-dropdown>
-
-      <b-nav-item-dropdown >
-          <template slot="button-content">
-              <em>Mercados</em>
-           </template>
-       <b-dropdown-item href="#"> >Pague Mais</b-dropdown-item>
-       <b-dropdown-item href="#"> >Baratino</b-dropdown-item>
-        </b-nav-item-dropdown>
-
-                     
-      
+      <div class="navbar-menu is-active">
         <div class="navbar-start">
           <div class="navbar-item field">
             <search-component></search-component>
           </div>
         </div>
-  
+        
         <div class="navbar-end">
           <div class="navbar-item social">
             <a href="#" class="icon" :title="facebookTooltip">
@@ -75,7 +43,7 @@
           </div>
         </div>
       </div>
-      
+
       <!-- For mobile and tablet -->
       <div v-show="isMenuOpen" class="navbar-end">
         <menu-component></menu-component>
@@ -90,71 +58,63 @@
 </template>
 
 <script>
-import Menu from "../menu/Menu";
-import Search from "../search/Search";
+  import Menu from '../menu/Menu';
+  import Search from '../search/Search';
 
-export default {
-  name: "header-component",
+  export default {
+    name: 'header-component',
 
-  data() {
-    return {
-      linkedinTooltip: "Follow us on Linkedin",
-      facebookTooltip: "Follow us on Facebook",
-      twitterTooltip: "Follow us on Twitter",
-      instagramTooltip: "Follow us on Instagram",
-      isCheckoutActive: false,
-      isMenuOpen: false
-    };
-  },
+    data () {
+      return {
+        linkedinTooltip: 'Follow us on Linkedin',
+        facebookTooltip: 'Follow us on Facebook',
+        twitterTooltip: 'Follow us on Twitter',
+        instagramTooltip: 'Follow us on Instagram',
+        isCheckoutActive: false,
+        isMenuOpen: false
+      }
+    },
 
-  computed: {
-    numProductsAdded() {
-      return this.$store.getters.productsAdded.length;
+    computed: {
+      numProductsAdded () {
+        return this.$store.getters.productsAdded.length;
+      }
+    },
+
+    components: {
+      'search-component': Search,
+      'menu-component': Menu
+    },
+
+    methods: {
+      showCheckoutModal () {
+        this.$store.commit('showCheckoutModal', true);
+      }
     }
-  },
-
-  components: {
-    "search-component": Search,
-    "menu-component": Menu
-  },
-
-  methods: {
-    showCheckoutModal() {
-      this.$store.commit("showCheckoutModal", true);
-    }
-  }
-};
+  };
 </script>
 
 <style lang="scss" scoped>
-
-.shopping-cart {
-  cursor: pointer;
-}
-a {
-  color: grey;
-}
-.navbar{
+  
+  .shopping-cart {
+    cursor: pointer;
+  }
+  a {
+    color: grey;
+  }
+  .navbar{
     position: fixed;
     z-index: 99;
     margin-top: 0%;
     padding: 2.5%;
      width: 100%;
-    height: 12%;
+    height: 10%;
     border-bottom: solid 3px #ff4000;
   }
-.navbar-item img {
-    max-height: 4rem;
+  .navbar-item img {
+    width: 10rem;
     margin-left: -35%;
-    height: auto;
-}
-.navbar-menu {
-  margin-top: -1.5%;
-}
- .navbar-brand {
-   margin-right: -1rem;
-   margin-top: -4%;
- 
-} 
+    max-height: 3.75rem;
+  }
 
 </style>
