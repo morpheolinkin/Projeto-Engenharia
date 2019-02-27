@@ -1,6 +1,7 @@
 <template>
   <div>
     <div class="card-image">
+    
       <figure class="image is-4by3">
         <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
       </figure>
@@ -46,13 +47,13 @@
                   <i class="fas fa-heart"></i>
                 </span>
               </button>
-              <button class="button is-small" :title="addToFavouriteLabel" v-show="!product.isFavourite" @click="saveToFavorite(product.id)">
+              <button class="button is-small" :PRODUTO="addToFavouriteLabel" v-show="!product.isFavourite" @click="saveToFavorite(product.ID_PRODUTO)">
                 <span class="icon is-small">
                   <i class="far fa-heart"></i>
                 </span>
               </button>
               <div class="select is-rounded is-small">
-                <select @change="onSelectQuantity(product.id)" v-model="selected">
+                <select @change="onSelectQuantity(product.ID_PRODUTO)" v-model="selected">
                   <option v-for="quantity in quantityArray" :value="quantity">{{ quantity }}</option>
                 </select>
               </div>

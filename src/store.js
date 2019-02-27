@@ -24,7 +24,7 @@ export default new Vuex.Store({
     }
   ],
     userInfo: {
-      isLoggedIn: false,
+      isLoggedIn: false, 
       isSignedUp: false,
       hasSearched: false,
       name: '',
@@ -44,7 +44,7 @@ export default new Vuex.Store({
       });
     },
     productsAddedToFavourite: state => {
-      return state.products.filter(el => {
+      return state.cart.filter(el => {
         return el.isFavourite;
       });
     },
@@ -77,7 +77,7 @@ export default new Vuex.Store({
   mutations: {
     addToCart: (state, id) => {
       state.products.forEach(el => {
-        if (state.products.ID_PRODUTO === el.products.ID_PRODUTO) {
+        if (ID_PRODUTO === el.ID_PRODUTO) {
           el.state.cart.isAddedToCart = true;
         }
       });
@@ -85,21 +85,21 @@ export default new Vuex.Store({
     },
     setAddedBtn: (state, data) => {
       state.products.forEach(el => {
-        if (data.state.product.ID_PRODUTO === el.state.product.ID_PRODUTO) {
-          el.isAddedBtn = data.status;
+        if (data.ID_PRODUTO === el.ID_PRODUTO) {
+          el.state.cart.isAddedBtn = data.status;
         }
       });
     },
     removeFromCart: (state, id) => {
       state.products.forEach(el => {
-        if (id === el.id) {
-          el.isAddedToCart = false;
+        if (ID_PRODUTO === el.ID_PRODUTO) {
+          el.state.cart.isAddedToCart = false;
         }
       });
     },
     removeProductsFromFavourite: state => {
       state.products.filter(el => {
-        el.isFavourite = false;
+        el.state.cart.isFavourite = false;
       });
     },
     isUserLoggedIn: (state, isUserLoggedIn) => {
@@ -128,8 +128,8 @@ export default new Vuex.Store({
     },
     addToFavourite: (state, id) => {
       state.products.forEach(el => {
-        if (id === el.id) {
-          el.isFavourite = true;
+        if (ID_PRODUTO === el.ID_PRODUTO) {
+          el.state.cart.isFavourite = true;
         }
       });
     },
@@ -142,7 +142,7 @@ export default new Vuex.Store({
     },
     quantity: (state, data) => {
       state.products.forEach(el => {
-        if (data.ID_PRODUTO === el.id) {
+        if (data.ID_PRODUTO === el.ID_PRODUTO) {
           el.ESTOQUE = data.ESTOQUE;
         }
       });
