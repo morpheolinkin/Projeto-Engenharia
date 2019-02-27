@@ -14,6 +14,15 @@ export default new Vuex.Store({
       name: '',
       productTitleSearched: ''
     },
+    cart: [
+      {
+      ID_PRODUTO: '',
+      CNPJ:'',
+      isAddedToCart: false,
+      isAddedBtn: false,
+      isFavourite: false,
+    }
+  ],
     userInfo: {
       isLoggedIn: false,
       isSignedUp: false,
@@ -30,7 +39,7 @@ export default new Vuex.Store({
   
   getters: {
     productsAdded: state => {
-      return state.products.filter(el => {
+      return state.cart.filter(el => {
         return el.isAddedToCart;
       });
     },
@@ -40,7 +49,7 @@ export default new Vuex.Store({
       });
     },
     getProductById: state => id => {
-      return state.products.find(product => product.id == id);
+      return state.products.find(product => product.ID_PRODUTO == id);
     },
     isUserLoggedIn: state => {
       return state.userInfo.isLoggedIn;
@@ -68,14 +77,15 @@ export default new Vuex.Store({
   mutations: {
     addToCart: (state, id) => {
       state.products.forEach(el => {
-        if (id === el.id) {
-          el.isAddedToCart = true;
+        if (state.products.ID_PRODUTO === el.products.ID_PRODUTO) {
+          el.state.cart.isAddedToCart = true;
         }
       });
+
     },
     setAddedBtn: (state, data) => {
       state.products.forEach(el => {
-        if (data.id === el.id) {
+        if (data.state.product.ID_PRODUTO === el.state.product.ID_PRODUTO) {
           el.isAddedBtn = data.status;
         }
       });

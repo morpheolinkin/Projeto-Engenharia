@@ -102,19 +102,20 @@
   a {
     color: grey;
   }
-  .navbar{
+
+ .navbar{
     position: fixed;
     z-index: 99;
     margin-top: 0%;
-    padding: 2.5%;
-     width: 100%;
-    height: 10%;
+    width: 100%;
+    padding: 0%;
     border-bottom: solid 3px #ff4000;
   }
   .navbar-item img {
-    width: 10rem;
-    margin-left: -35%;
+    width: 14rem;
+    margin-left: -5%;
     max-height: 3.75rem;
   }
+
 
 </style>

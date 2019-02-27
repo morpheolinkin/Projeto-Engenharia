@@ -45,4 +45,10 @@ export default {
 	}
 }
 </script>
+<style>
+.input{
+
+	padding: 8.8%;
+}
+</style>
 

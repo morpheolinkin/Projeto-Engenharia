@@ -5,6 +5,7 @@
           <img src="https://bulma.io/images/placeholders/480x480.png">
         </figure>
         {{product.FANTASIA}}
+        {{product.id}}
         <div class="card-content column is-two-thirds">
           <div class="card-content__title">
             <h2 class="title is-4">{{ product.PRODUTO.slice(0,13) }}...
@@ -65,7 +66,7 @@
           </div>
           <div class="card-content__btn is-pulled-right">
             <button class="button is-primary" v-if="!isAddedBtn" @click="addToCart(product.ID_PRODUTo)">{{ addToCartLabel }}</button>
-            <button class="button is-text" v-if="isAddedBtn" @click="removeFromCart(product.id)">{{ removeFromCartLabel }}</button>
+            <button class="button is-text" v-if="isAddedBtn" @click="removeFromCart(product.ID_PRODUTO)">{{ removeFromCartLabel }}</button>
           </div>
       </div>
     </div>
@@ -88,7 +89,7 @@ export default {
     };
   },
   mounted () {
-    this.product = this.$store.getters.getProductById(this.$route.params.ID_PRODUTO);
+    this.product = this.$store.getters.getProductById(this.$route.params.id);
     this.selected = this.product.quantity;
     for (let i = 1; i <= 20; i++) {
       this.quantityArray.push(i);

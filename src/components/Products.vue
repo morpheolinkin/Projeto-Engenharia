@@ -8,11 +8,11 @@
     <div class="card-content">
       <div class="media">
         <div class="media-content">
-          <p class="title is-4">{{ product.PRODUTO.slice(0,13)}}...</p>
+          <p class="title is-4">{{ product.PRODUTO.slice(0,13) }}</p>
         </div>
       </div>
       <div class="content is-clearfix">
-        <p>{{ product.PRODUTO }} </p>
+        <p>{{ product.PRODUTO }}</p>
         <div class="is-pulled-left">
           <i v-if="product.ratings === 1" class="fa fa-star"></i>
           <i v-if="product.ratings === 2" class="fa fa-star"></i>
@@ -38,22 +38,22 @@
       <div class="card-footer btn-actions">
         <div class="card-footer-item field is-grouped">
           <div class="buttons">
-            <button class="button is-primary" v-if="!product.isAddedToCart" @click="addToCart(product.ID_PRODUTO)">{{ addToCartLabel }}</button>
-            <button class="button is-text" v-if="product.isAddedToCart" @click="removeFromCart(product.ID_PRODUTO, false)">{{ removeFromCartLabel }}</button>
+            <button class="button is-primary" v-if="!$store.state.cart.isAddedToCart" @click="addToCart(product.ID_PRODUTO)">{{ addToCartLabel }}</button>
+            <button class="button is-text" v-if="product.isAddedToCart" @click="removeFromCart(product.id, false)">{{ removeFromCartLabel }}</button>
             <div>
-              <button class="button is-small" :title="removeFromFavouriteLabel" v-show="product.isFavourite" @click="removeFromFavourite(product.ID_PRODUTO)">
+              <button class="button is-small" :title="removeFromFavouriteLabel" v-show="product.isFavourite" @click="removeFromFavourite(product.id)">
                 <span class="icon is-small">
                   <i class="fas fa-heart"></i>
                 </span>
               </button>
-              <button class="button is-small" :title="addToFavouriteLabel" v-show="!product.isFavourite" @click="saveToFavorite(product.ID_PRODUTO)">
+              <button class="button is-small" :title="addToFavouriteLabel" v-show="!product.isFavourite" @click="saveToFavorite(product.id)">
                 <span class="icon is-small">
                   <i class="far fa-heart"></i>
                 </span>
               </button>
               <div class="select is-rounded is-small">
-                <select @change="onSelectQuantity(product.ID_PRODUTO)" v-model="selected">
-                  <option v-for="quantity in quantityArray" :value="quantity">{{ product.ESTOQUE }}</option>
+                <select @change="onSelectQuantity(product.id)" v-model="selected">
+                  <option v-for="quantity in quantityArray" :value="quantity">{{ quantity }}</option>
                 </select>
               </div>
             </div>
@@ -67,7 +67,7 @@
         path: '/product-detail',
         name: 'product-detail-component',
         params: {
-          id: product.ID_PRODUTO,
+          id:product.ID_PRODUTO,
           title: product.PRODUTO,
           price: product.PRECO,
           rating: product.ratings,
@@ -81,18 +81,15 @@
 </template>
 
 <script>
-
-
 export default {
   name: 'products-component',
   props: ['product'],
-  products: [],
   
   data () {
     return {
-      addToCartLabel: 'Add ao carrinho',
-      viewDetailsLabel: 'Detalhes',
-      removeFromCartLabel: 'Remover produto',
+      addToCartLabel: 'Add to cart',
+      viewDetailsLabel: 'Details',
+      removeFromCartLabel: 'Remove from cart',
       addToFavouriteLabel: 'Add to favourite',
       removeFromFavouriteLabel: 'Remove from favourite',
       selected: 1,
@@ -101,9 +98,13 @@ export default {
   },
 
   mounted () {
-    console.log('never ends');
-   //this.$store.dispatch(getProducts);
-    
+    for (let i = 1; i <= 20; i++) {
+      this.quantityArray.push(i);
+    }
+
+    if (this.$props.product.quantity > 1) {
+      this.selected = this.$props.product.quantity;
+    }
   },
 
   computed: {
@@ -113,13 +114,12 @@ export default {
   },
 
   methods: {
-     
-    addToCart (id) {
+    addToCart (ID_PRODUTO) {
       let data = {
-        id: ID_PRODUTO,
+        id: products.ID_PRODUTO,
         status: true
       }
-      this.$store.commit('addToCart', ID_PRODUTO);
+      this.$store.commit('addToCart', id);
       this.$store.commit('setAddedBtn', data);
     },
     removeFromCart (id) {
@@ -144,7 +144,7 @@ export default {
     },
     onSelectQuantity (id) {
       let data = {
-        id: this.$store.state.products.ID_PRODUTO,
+        id: id,
         quantity: this.selected
       }
       this.$store.commit('quantity', data);
