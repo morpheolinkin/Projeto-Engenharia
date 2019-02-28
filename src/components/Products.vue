@@ -39,7 +39,7 @@
       <div class="card-footer btn-actions">
         <div class="card-footer-item field is-grouped">
           <div class="buttons">
-            <button class="button is-primary" v-if="!$store.state.cart.isAddedToCart" @click="addToCart(product.ID_PRODUTO)">{{ addToCartLabel }}</button>
+            <button class="button is-primary" v-if="!$store.state.products.ID_PRODUTO" @click="addToCart(product.ID_PRODUTO, product.CNPJ_MERCADO)">{{ addToCartLabel }}</button>
             <button class="button is-text" v-if="product.isAddedToCart" @click="removeFromCart(product.id, false)">{{ removeFromCartLabel }}</button>
             <div>
               <button class="button is-small" :title="removeFromFavouriteLabel" v-show="product.isFavourite" @click="removeFromFavourite(product.id)">
@@ -56,6 +56,7 @@
                 <select @change="onSelectQuantity(product.ID_PRODUTO)" v-model="selected">
                   <option v-for="quantity in quantityArray" :value="quantity">{{ quantity }}</option>
                 </select>
+                {{selected}}
               </div>
             </div>
           </div>
@@ -103,8 +104,8 @@ export default {
       this.quantityArray.push(i);
     }
 
-    if (this.$props.product.quantity > 1) {
-      this.selected = this.$props.product.quantity;
+    if (this.$store.state.products.ESTOQUE > 1) {
+      this.selected = this.$store.state.products.ESTOQUE;
     }
   },
 
@@ -115,13 +116,19 @@ export default {
   },
 
   methods: {
-    addToCart (ID_PRODUTO) {
-      let data = {
-        id: products.ID_PRODUTO,
-        status: true
-      }
-      this.$store.commit('addToCart', id);
-      this.$store.commit('setAddedBtn', data);
+    addToCart (ID_PRODUTO, CNPJ_MERCADO) {
+      
+       let id = ID_PRODUTO
+       let cnpj = CNPJ_MERCADO
+       let quantidade = this.selected
+       let payload = {
+         id: id,
+         cnpj: cnpj,
+         quantidade: quantidade
+       }
+      //this.$store.commit('addToCart', id);
+      this.$store.dispatch('addToCart', payload);
+
     },
     removeFromCart (id) {
       let data = {
