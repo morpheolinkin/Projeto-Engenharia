@@ -39,13 +39,13 @@ export default new Vuex.Store({
   
   getters: {
     productsAdded: state => {
-      return state.cart.filter(el => {
-        return el.isAddedToCart;
+      return state.products.filter(el => {
+       
       });
     },
     productsAddedToFavourite: state => {
-      return state.cart.filter(el => {
-        return el.isFavourite;
+      return state.products.filter(el => {
+        return el.ID_PRODUTO;
       });
     },
     getProductById: state => id => {
@@ -173,6 +173,17 @@ export default new Vuex.Store({
         .catch(error => {
           console.log(error);
         });
+    },
+    addToCart({}, payload){
+
+      console.log(payload)
+      axios.post("http://191.252.103.186/api/addToCart")
+      .then(response => {
+        console.log(response);
+      }).catch(
+        console.log("Deu merda!!")
+      )
+
     }
   }
 });
